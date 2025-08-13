@@ -1,10 +1,40 @@
+<!DOCTYPE html>
 <html>
-<title>
-Student details
-</title>
+<head>
+<meta charset="UTF-8">
+<title>Pixel Habit Garden</title>
+<style>
+body{font-family:sans-serif;text-align:center}
+#tasks{list-style:none;padding:0}
+#tasks li{margin:5px}
+#bar{height:20px;background:#ddd}
+#fill{height:100%;background:green;width:0%}
+</style>
+</head>
 <body>
-<h1>
-Abhishek
-</h1>
+<h1>🌱 Pixel Habit Garden</h1>
+<input id="newTask" placeholder="New habit">
+<button onclick="addTask()">Add</button>
+<ul id="tasks"></ul>
+<div id="bar"><div id="fill"></div></div>
+<p id="plant">🌱</p>
+<script>
+let done=0,total=0
+function addTask(){
+ let t=document.createElement("li")
+ let c=document.createElement("input")
+ c.type="checkbox"
+ c.onchange=update
+ t.appendChild(c)
+ t.append(" "+newTask.value)
+ tasks.appendChild(t)
+ total++;newTask.value=""
+}
+function update(){
+ done=document.querySelectorAll('#tasks input:checked').length
+ document.getElementById('fill').style.width=(done/total*100)+"%"
+ document.getElementById('plant').textContent=["🌱","🌿","🌳"][Math.min(2,Math.floor(done/total*3))]
+}
+</script>
 </body>
 </html>
